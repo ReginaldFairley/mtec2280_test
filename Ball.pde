@@ -34,13 +34,22 @@ class Ball{
           Vy = -5;
         } 
       } else {
-        x = mouseX;
+        x = paddle.x;
       }
     }
     
     public void checkPaddle(Paddle pad){
       if(x > pad.x - pad.w/2 && x < pad.x + pad.w/2 && y > pad.y-d/2 && y < pad.y+d){
         Vy *=- 1;
-      } 
+       } 
     }
+    
+    public void launchIfStationary() {
+  if (!canMove) {
+    y -= 5;
+    Vy = -5;
+    canMove = true;
+  }
+}
+
 }
